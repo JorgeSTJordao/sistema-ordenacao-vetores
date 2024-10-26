@@ -4,14 +4,14 @@ import java.util.Random;
 
 public class GeradorVetores {
 
-    public int[] gerarVetor(int tamanho, int max, int min){
+    public int[] gerarVetor(int tamanhoVetor, int maxValues){
 
         Random gerador = new Random();
 
-        int[] vetor = new int[tamanho];
+        int[] vetor = new int[tamanhoVetor];
 
-        for (int i = 0; i < tamanho; i++){
-            vetor[i] = gerador.nextInt(max - min + 1) + min;
+        for (int i = 0; i < tamanhoVetor; i++){
+            vetor[i] = gerador.nextInt(maxValues);
         }
         return vetor;
     }
