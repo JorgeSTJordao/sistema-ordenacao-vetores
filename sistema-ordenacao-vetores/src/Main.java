@@ -1,5 +1,8 @@
 import dados.Armazenamento;
 import grupoB.mergeSort.MergeSort;
+import grupoA.InsertSort.InsertSort;
+import grupoC.CountingSort.CountingSort;
+
 
 //Inicio do programa
 public class Main {
@@ -23,20 +26,22 @@ public class Main {
     public static void ordenar(int codigo, int[] vetor, int tamanhoVetor){
         switch (codigo) {
             case 1 -> {
-                //CaseA
+                // caso do grupo A (Insert Sort)
+                InsertSort.sort(vetor);
             }
             case 2 -> {
-                //CaseB1
+                // caso do grupo B (já implementado)
                 MergeSort.separar(vetor, tamanhoVetor, tamanhoVetor);
             }
             case 3 -> {
-                //CaseB2
+                // segundo caso do grupo B (se houver)
             }
             case 4 -> {
-                //CaseC
+                // caso do grupo C (Counting Sort)
+                CountingSort.sort(vetor);
             }
             default -> {
-                System.out.println("Tente de novo!");
+                System.out.println("tente de novo!");
             }
         }
     }
