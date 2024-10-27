@@ -19,7 +19,7 @@ public class Main {
         //Sempre será gerado 5 vetores, pois precisamos de no mínimo 5 para o cálculo da média
         for (int i = 0; i < 5; i++){
             //Aqui podemos selecionar a ordenação que desejamos
-            ordenar(2, vetores[i], tamanhoVetor);
+            ordenar(1, vetores[i], tamanhoVetor);
         }
     }
 
