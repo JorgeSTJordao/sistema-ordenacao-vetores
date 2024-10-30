@@ -1,16 +1,20 @@
 package grupoC.CountingSort;
 
 public class CountingSort {
-    public static void sort(int[] vetor) {
-        int minValue = findMin(vetor);
-        int maxValue = findMax(vetor);
+
+    public static int[] vetorAtual = {};
+    public static int qtdeTrocas = 0;
+    public static int qtdeIteracoes = 0;
+    public static void sort(int tamanhovetorAtualAtual) {
+        int minValue = findMin(vetorAtual, tamanhovetorAtualAtual);
+        int maxValue = findMax(vetorAtual, tamanhovetorAtualAtual);
         int range = maxValue - minValue + 1;
         int[] count = new int[range];
-        int[] output = new int[vetor.length];
+        int[] output = new int[tamanhovetorAtualAtual];
 
         // contagem de elementos
-        for (int i = 0; i < vetor.length; i++) {
-            count[vetor[i] - minValue]++;
+        for (int i = 0; i < tamanhovetorAtualAtual; i++) {
+            count[vetorAtual[i] - minValue]++;
         }
 
         // acumulacao dos elementos
@@ -18,37 +22,33 @@ public class CountingSort {
             count[i] += count[i - 1];
         }
 
-        // ordenacao do vetor
-        for (int i = vetor.length - 1; i >= 0; i--) {
-            output[count[vetor[i] - minValue] - 1] = vetor[i];
-            count[vetor[i] - minValue]--;
+        // ordenacao do vetorAtualAtual
+        for (int i = tamanhovetorAtualAtual - 1; i >= 0; i--) {
+            output[count[vetorAtual[i] - minValue] - 1] = vetorAtual[i];
+            count[vetorAtual[i] - minValue]--;
         }
 
-        // copia o vetor ordenado para o original
-        System.arraycopy(output, 0, vetor, 0, vetor.length);
-
-        // imprime o vetor ordenado
-        for (int num : vetor) {
-            System.out.print(num + " ");
+        // copia o vetorAtualAtual ordenado para o original
+        for (int i = 0; i < tamanhovetorAtualAtual; i++) {
+            vetorAtual[i] = output[i];
         }
-        System.out.println();
     }
 
-    private static int findMin(int[] vetor) {
-        int min = vetor[0];
-        for (int i = 1; i < vetor.length; i++) {
-            if (vetor[i] < min) {
-                min = vetor[i];
+    private static int findMin(int[] vetorAtualAtual, int tamanhovetorAtualAtual) {
+        int min = vetorAtualAtual[0];
+        for (int i = 1; i < tamanhovetorAtualAtual; i++) {
+            if (vetorAtualAtual[i] < min) {
+                min = vetorAtualAtual[i];
             }
         }
         return min;
     }
 
-    private static int findMax(int[] vetor) {
-        int max = vetor[0];
-        for (int i = 1; i < vetor.length; i++) {
-            if (vetor[i] > max) {
-                max = vetor[i];
+    private static int findMax(int[] vetorAtualAtual, int tamanhovetorAtualAtual) {
+        int max = vetorAtualAtual[0];
+        for (int i = 1; i < tamanhovetorAtualAtual; i++) {
+            if (vetorAtualAtual[i] > max) {
+                max = vetorAtualAtual[i];
             }
         }
         return max;

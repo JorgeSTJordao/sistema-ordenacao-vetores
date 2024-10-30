@@ -2,34 +2,41 @@ package grupoB.quickSort;
 
 public class QuickSort {
 
-    public static void quickSort(int[] vetorAtual, int inicio, int fim){
-        if (inicio < fim){
-            int particaoIndice = particao(vetorAtual, inicio, fim);
+    public static int[] vetorAtual = {};
+    public static int qtdeTrocas = 0;
+    public static int qtdeIteracoes = 0;
+    public static void sort(int tamanhoVetor){
+        tamanhoVetor -= 1;
+        quickSort(0, tamanhoVetor);
+    }
 
-            quickSort(vetorAtual, inicio, particaoIndice-1);
-            quickSort(vetorAtual, particaoIndice+1, fim);
+    public static void quickSort(int inicio, int fim){
+        if (inicio < fim){
+            int pivot = particao(inicio, fim);
+
+            quickSort(inicio, pivot-1);
+            quickSort(pivot+1, fim);
         }
     }
 
-    public static int particao(int[] vetorAtual, int inicio, int fim){
+    public static int particao(int inicio, int fim){
         int pivot = vetorAtual[fim];
-        int i = (inicio -1);
+        int i = inicio;
 
         for (int j = inicio; j < fim; j++){
             if (vetorAtual[j] <= pivot){
-                i++;
-
-                int swapTemp = vetorAtual[i];
-                vetorAtual[i] = vetorAtual[j];
-                vetorAtual[j] = swapTemp;
+                int aux = vetorAtual[j];
+                vetorAtual[j] = vetorAtual[i];
+                vetorAtual[i] = aux;
+                i += 1;
             }
 
+            int aux =  vetorAtual[i];
+            vetorAtual[i] = vetorAtual[fim];
+            vetorAtual[fim] = aux;
         }
 
-        int swapTemp = vetorAtual[i + 1];
-        vetorAtual[i + 1] = vetorAtual[fim];
-        vetorAtual[fim] = swapTemp;
-
-        return i + 1;
+        return i;
     }
+
 }
